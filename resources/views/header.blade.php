@@ -10,13 +10,13 @@
       </a>
     </li>
     <li class="hover:text-blue-300">
-      <a href="{{ route('login') }}">
+      <a href="{{ route('auth.login') }}">
         Log In
       </a>
     </li>
     <li>
       <a
-        href="{{ route('signup') }}"
+        href="{{ route('auth.signup') }}"
         class="px-4 py-2 rounded-full text-white hover:text-blue-100 bg-gradient-to-r from-blue-400 to-blue-600">
         Get started
       </a>

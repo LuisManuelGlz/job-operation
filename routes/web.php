@@ -20,9 +20,11 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
 
-Route::get('/signup', [AuthController::class, 'signup'])->name('signup');
+Route::get('/signup', [AuthController::class, 'signup'])->name('auth.signup');
+
+Route::post('/create', [AuthController::class, 'create'])->name('auth.create');
 
 Route::resource('profiles', ProfileController::class);
 
