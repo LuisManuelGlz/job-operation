@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.app')
 
 @section('content')
 
@@ -6,7 +6,7 @@
   <div class="w-2/5">
     <h2 class="font-bold text-5xl text-blue-400 mb-10">Sign Up</h2>
 
-    <form action="{{ route('auth.create') }}" method="post">
+    <form action="{{ route('register') }}" method="post">
       @csrf()
 
       <div>
@@ -38,7 +38,7 @@
         <button class="w-full mb-5 px-6 py-2 rounded-full text-white hover:text-blue-100 bg-gradient-to-r from-blue-400 to-blue-600" type="submit">
           Sign Up
         </button>
-        <a class="hover:text-blue-300 text-blue-400 text-lg" href="{{ route('auth.login') }}">
+        <a class="hover:text-blue-300 text-blue-400 text-lg" href="{{ route('login') }}">
           I already have an account
         </a>
       </div>

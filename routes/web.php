@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 
@@ -20,11 +21,14 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
-
-Route::get('/signup', [AuthController::class, 'signup'])->name('auth.signup');
-
-Route::post('/create', [AuthController::class, 'create'])->name('auth.create');
+// Authentication routes
+Route::prefix('auth')->group(function() {
+    Route::get('/login', [LoginController::class, 'login'])->name('login');
+    
+    Route::get('/register', [RegisterController::class, 'register'])->name('register');
+    
+    Route::post('/register', [RegisterController::class, 'store']);
+});
 
 Route::resource('profiles', ProfileController::class);
 
