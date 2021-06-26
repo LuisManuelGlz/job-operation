@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 
 /*
@@ -16,7 +18,13 @@ use App\Http\Controllers\PostController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
+
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+
+Route::get('/signup', [AuthController::class, 'signup'])->name('signup');
+
+Route::resource('profiles', ProfileController::class);
 
 Route::resource('posts', PostController::class)->except([
     'update', 'edit'

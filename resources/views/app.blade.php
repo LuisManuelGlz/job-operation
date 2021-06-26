@@ -13,12 +13,6 @@
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-        <!-- <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-            }
-        </style> -->
     </head>
     <body class="antialiased">
         @include('header')
