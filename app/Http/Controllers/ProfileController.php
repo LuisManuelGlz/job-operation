@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -24,7 +25,14 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        //
+        $user_id = Auth::user()->id;
+        $profile = Profile::where('user_id', $user_id)->first();
+
+        if ($profile) {
+            return redirect()->route('profiles.index');
+        }
+
+        return view('profiles.create');
     }
 
     /**
@@ -35,7 +43,21 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'position' => 'required',
+            'website' => 'nullable|url'
+        ]);
+
+        $request->user()->profile()->create($request->only([
+            'position',
+            'bio',
+            'location',
+            'company',
+            'skills',
+            'website'
+        ]));
+
+        return redirect()->route('profiles.index');
     }
 
     /**

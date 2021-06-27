@@ -4,22 +4,33 @@
     Job Operation
   </a>
   <ul class="flex gap-3">
-    <li class="hover:text-blue-300">
-      <a href="{{ route('profiles.index') }}">
-        Dashboard
-      </a>
-    </li>
-    <li class="hover:text-blue-300">
-      <a href="{{ route('login') }}">
-        Log In
-      </a>
-    </li>
-    <li>
-      <a
-        href="{{ route('register') }}"
-        class="px-4 py-2 rounded-full text-white hover:text-blue-100 bg-gradient-to-r from-blue-400 to-blue-600">
-        Get started
-      </a>
-    </li>
+    @if (auth()->user())
+      <li class="hover:text-blue-300">
+        <a href="{{ route('profiles.index') }}">
+          Dashboard
+        </a>
+      </li>
+      <li class="hover:text-blue-300">
+        <form action="{{ route('logout') }}" method="post">
+          @csrf()
+          <button type="submit">
+            Logout
+          </button>
+        </form>
+      </li>
+    @else
+      <li class="hover:text-blue-300">
+        <a href="{{ route('login') }}">
+          Log In
+        </a>
+      </li>
+      <li>
+        <a
+          href="{{ route('register') }}"
+          class="px-4 py-2 rounded-full text-white hover:text-blue-100 focus:text-blue-100 bg-gradient-to-r from-blue-400 to-blue-600">
+          Get started
+        </a>
+      </li>
+    @endif
   </ul>
 </nav>

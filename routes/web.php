@@ -28,10 +28,12 @@ Route::prefix('auth')->group(function() {
     Route::get('/register', [RegisterController::class, 'register'])->name('register');
     
     Route::post('/register', [RegisterController::class, 'store']);
+
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
-Route::resource('profiles', ProfileController::class);
+Route::resource('profiles', ProfileController::class)->middleware('auth');
 
 Route::resource('posts', PostController::class)->except([
     'update', 'edit'
-]);
+])->middleware('auth');
