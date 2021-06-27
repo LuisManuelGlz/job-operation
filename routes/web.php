@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,12 +19,20 @@ use App\Http\Controllers\PostController;
 */
 
 Route::get('/', function () {
+    $user = Auth::user();
+
+    if ($user) {
+        return redirect()->route('profiles.index');
+    }
+
     return view('welcome');
 })->name('home');
 
 // Authentication routes
 Route::prefix('auth')->group(function() {
     Route::get('/login', [LoginController::class, 'login'])->name('login');
+
+    Route::post('/login', [LoginController::class, 'store']);
     
     Route::get('/register', [RegisterController::class, 'register'])->name('register');
     
