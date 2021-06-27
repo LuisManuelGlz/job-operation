@@ -21,21 +21,20 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     $user = Auth::user();
 
-    if ($user) {
+    if ($user)
         return redirect()->route('profiles.index');
-    }
 
     return view('welcome');
 })->name('home');
 
 // Authentication routes
-Route::prefix('auth')->group(function() {
+Route::prefix('auth')->group(function () {
     Route::get('/login', [LoginController::class, 'login'])->name('login');
 
     Route::post('/login', [LoginController::class, 'store']);
-    
+
     Route::get('/register', [RegisterController::class, 'register'])->name('register');
-    
+
     Route::post('/register', [RegisterController::class, 'store']);
 
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

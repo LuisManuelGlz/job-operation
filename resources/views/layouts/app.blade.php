@@ -17,7 +17,7 @@
     <body class="antialiased">
         @include('header')
 
-        <div class="container mx-auto px-5">
+        <div class="h-screen container mx-auto px-5">
             @yield('content')
         </div>
 
