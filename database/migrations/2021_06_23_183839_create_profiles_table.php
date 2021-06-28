@@ -17,11 +17,11 @@ class CreateProfilesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->text('position');
-            $table->text('bio')->nullable()->change();
-            $table->text('location')->nullable()->change();
-            $table->text('company')->nullable()->change();
-            $table->text('skills')->nullable()->change();
-            $table->text('website')->nullable()->change();
+            $table->text('bio')->nullable();
+            $table->text('location')->nullable();
+            $table->text('company')->nullable();
+            $table->text('skills')->nullable();
+            $table->text('website')->nullable();
             $table->timestamps();
         });
     }

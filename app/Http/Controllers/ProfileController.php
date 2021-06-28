@@ -45,10 +45,6 @@ class ProfileController extends Controller
     {
         $request->validate([
             'position' => 'required',
-            'bio' => 'nullable',
-            'location' => 'nullable',
-            'company' => 'nullable',
-            'skills' => 'nullable',
             'website' => 'nullable|url'
         ]);
 
