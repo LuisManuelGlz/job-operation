@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title') Register @endsection
+
 @section('content')
 
 <div class="flex gap-5 mt-5">

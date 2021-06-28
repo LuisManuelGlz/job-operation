@@ -3,8 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CertificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\EducationController;
+use App\Http\Controllers\ExperienceController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -41,6 +44,18 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::resource('profiles', ProfileController::class)->middleware('auth');
+
+Route::resource('education', EducationController::class)->middleware('auth')->except([
+    'index', 'show'
+]);
+
+Route::resource('certifications', CertificationController::class)->middleware('auth')->except([
+    'index', 'show'
+]);
+
+Route::resource('experience', ExperienceController::class)->middleware('auth')->except([
+    'index', 'show'
+]);
 
 Route::resource('posts', PostController::class)->except([
     'update', 'edit'

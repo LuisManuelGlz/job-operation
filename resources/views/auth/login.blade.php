@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title') Login @endsection
+
 @section('content')
 
 <div class="flex flex-col items-center mt-5">

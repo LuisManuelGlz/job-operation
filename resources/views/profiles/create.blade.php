@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title') Create profile @endsection
+
 @section('content')
 
 <h2 class="font-bold text-5xl text-blue-400 mb-10">Create your profile</h2>
