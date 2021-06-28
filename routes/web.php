@@ -25,7 +25,7 @@ Route::get('/', function () {
     $user = Auth::user();
 
     if ($user)
-        return redirect()->route('profiles.index');
+        return redirect()->route('profiles.me');
 
     return view('welcome');
 })->name('home');
@@ -43,20 +43,36 @@ Route::prefix('auth')->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
-Route::resource('profiles', ProfileController::class)->middleware('auth');
+Route::get('/profiles/me', [ProfileController::class, 'me'])
+    ->name('profiles.me')
+    ->middleware('auth');
 
-Route::resource('education', EducationController::class)->middleware('auth')->except([
-    'index', 'show'
-]);
+Route::resource('profiles', ProfileController::class)
+    ->middleware('auth')
+    ->except([
+        'index'
+    ]);
 
-Route::resource('certifications', CertificationController::class)->middleware('auth')->except([
-    'index', 'show'
-]);
+Route::resource('education', EducationController::class)
+    ->middleware('auth')
+    ->except([
+        'index', 'show'
+    ]);
 
-Route::resource('experience', ExperienceController::class)->middleware('auth')->except([
-    'index', 'show'
-]);
+Route::resource('certifications', CertificationController::class)
+    ->middleware('auth')
+    ->except([
+        'index', 'show'
+    ]);
 
-Route::resource('posts', PostController::class)->except([
-    'update', 'edit'
-])->middleware('auth');
+Route::resource('experience', ExperienceController::class)
+    ->middleware('auth')
+    ->except([
+        'index', 'show'
+    ]);
+
+Route::resource('posts', PostController::class)
+    ->middleware('auth')
+    ->except([
+        'update', 'edit'
+    ]);

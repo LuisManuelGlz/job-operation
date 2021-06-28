@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\Auth;
 class ProfileController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display the specified resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function me()
     {
         return view('dashboard');
     }
@@ -29,7 +29,7 @@ class ProfileController extends Controller
         $profile = Profile::where('user_id', $user_id)->first();
 
         if ($profile) {
-            return redirect()->route('profiles.index');
+            return redirect()->route('profiles.me');
         }
 
         return view('profiles.create');
@@ -57,7 +57,7 @@ class ProfileController extends Controller
             'website'
         ]));
 
-        return redirect()->route('profiles.index');
+        return redirect()->route('profiles.me');
     }
 
     /**

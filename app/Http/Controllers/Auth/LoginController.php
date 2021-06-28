@@ -26,7 +26,7 @@ class LoginController extends Controller
         $profile = Profile::where('user_id', $user_id)->first();
 
         if ($profile)
-            return redirect()->route('profiles.index');
+            return redirect()->route('profiles.me');
 
         return redirect()->route('profiles.create');
     }
