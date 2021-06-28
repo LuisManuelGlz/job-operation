@@ -19,14 +19,14 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        Auth::attempt($request->only('email', 'password'));
+        if (!Auth::attempt($request->only('email', 'password')))
+            return back()->with('status', 'Invalid email or password');
 
         $user_id = Auth::user()->id;
         $profile = Profile::where('user_id', $user_id)->first();
 
-        if ($profile) {
+        if ($profile)
             return redirect()->route('profiles.index');
-        }
 
         return redirect()->route('profiles.create');
     }

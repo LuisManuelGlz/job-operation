@@ -5,6 +5,12 @@
 @section('content')
 
 <div class="flex flex-col items-center mt-5">
+  @if (session('status'))
+    <div class="px-6 py-2 bg-red-400 mb-10 rounded-md text-white w-3/5 text-center">
+      {{ session('status') }}
+    </div>
+  @endif
+
   <h2 class="font-bold text-5xl text-blue-400 mb-10">Welcome</h2>
 
   <form class="w-full md:w-4/5 lg:w-1/2" action="{{ route('login') }}" method="post">
