@@ -15,6 +15,9 @@ class ProfileController extends Controller
      */
     public function me()
     {
+        $user_id = Auth::user()->id;
+        $profile = Profile::where('user_id', $user_id)->first();
+
         return view('dashboard');
     }
 
@@ -48,14 +51,7 @@ class ProfileController extends Controller
             'website' => 'nullable|url'
         ]);
 
-        $request->user()->profile()->create($request->only([
-            'position',
-            'bio',
-            'location',
-            'company',
-            'skills',
-            'website'
-        ]));
+        $request->user()->profile()->create($request->all());
 
         return redirect()->route('profiles.me');
     }

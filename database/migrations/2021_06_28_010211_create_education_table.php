@@ -15,6 +15,11 @@ class CreateEducationTable extends Migration
     {
         Schema::create('education', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('profile_id')->constrained()->onDelete('cascade');
+            $table->text('school');
+            $table->text('degree');
+            $table->year('starting_year');
+            $table->year('ending_year');
             $table->timestamps();
         });
     }

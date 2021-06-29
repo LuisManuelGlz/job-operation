@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Education;
+use App\Models\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EducationController extends Controller
 {
@@ -25,7 +27,22 @@ class EducationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user_id = Auth::user()->id;
+        $profile = Profile::where('user_id', $user_id)->first();
+
+        if (!$profile)
+            return redirect()->route('profiles.create');
+
+        $request->validate([
+            'school' => 'required',
+            'degree' => 'required',
+            'starting_year' => 'required',
+            'ending_year' => 'required',
+        ]);
+
+        $profile->education()->create($request->all());
+
+        return redirect()->route('profiles.me');
     }
 
     /**
