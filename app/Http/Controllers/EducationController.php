@@ -38,7 +38,7 @@ class EducationController extends Controller
         $profile = Profile::where('user_id', $user_id)->first();
         $profile->education()->create($request->all());
 
-        return redirect()->route('profiles.me');
+        return redirect()->route('profiles.dashboard');
     }
 
     /**

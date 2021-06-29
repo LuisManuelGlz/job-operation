@@ -25,27 +25,32 @@ Route::get('/', function () {
     $user = Auth::user();
 
     if ($user)
-        return redirect()->route('profiles.me');
+        return redirect()->route('profiles.dashboard');
 
     return view('welcome');
 })->name('home');
 
 // Authentication routes
 Route::prefix('auth')->group(function () {
-    Route::get('/login', [LoginController::class, 'login'])->name('login');
+    Route::get('/login', [LoginController::class, 'login'])
+        ->middleware('guest')
+        ->name('login');
 
     Route::post('/login', [LoginController::class, 'store']);
 
-    Route::get('/register', [RegisterController::class, 'register'])->name('register');
+    Route::get('/register', [RegisterController::class, 'register'])
+        ->middleware('guest')
+        ->name('register');
 
     Route::post('/register', [RegisterController::class, 'store']);
 
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::post('/logout', [LoginController::class, 'logout'])
+        ->name('logout');
 });
 
-Route::get('/profiles/me', [ProfileController::class, 'me'])
+Route::get('/dashboard', [ProfileController::class, 'dashboard'])
     ->middleware('auth', 'verify-profile-exists')
-    ->name('profiles.me');
+    ->name('profiles.dashboard');
 
 Route::resource('profiles', ProfileController::class)
     ->middleware('auth', 'verify-profile-exists')

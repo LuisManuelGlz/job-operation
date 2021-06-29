@@ -13,7 +13,7 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function me()
+    public function dashboard()
     {
         $profile = Auth::user()->profile;
         return view('dashboard', ['profile' => $profile]);
@@ -44,7 +44,7 @@ class ProfileController extends Controller
 
         $request->user()->profile()->create($request->all());
 
-        return redirect()->route('profiles.me');
+        return redirect()->route('profiles.dashboard');
     }
 
     /**

@@ -6,7 +6,7 @@
   <ul class="flex gap-3">
     @if (auth()->user())
       <li class="hover:text-blue-300">
-        <a href="{{ route('profiles.me') }}">
+        <a href="{{ route('profiles.dashboard') }}">
           Dashboard
         </a>
       </li>
