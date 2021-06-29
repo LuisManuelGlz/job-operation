@@ -44,35 +44,35 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::get('/profiles/me', [ProfileController::class, 'me'])
-    ->name('profiles.me')
-    ->middleware('auth');
+    ->middleware('auth', 'verify-profile-exists')
+    ->name('profiles.me');
 
 Route::resource('profiles', ProfileController::class)
-    ->middleware('auth')
+    ->middleware('auth', 'verify-profile-exists')
     ->except([
         'index'
     ]);
 
 Route::resource('education', EducationController::class)
-    ->middleware('auth')
+    ->middleware('auth', 'verify-profile-exists')
     ->except([
         'index', 'show'
     ]);
 
 Route::resource('certifications', CertificationController::class)
-    ->middleware('auth')
+    ->middleware('auth', 'verify-profile-exists')
     ->except([
         'index', 'show'
     ]);
 
 Route::resource('experience', ExperienceController::class)
-    ->middleware('auth')
+    ->middleware('auth', 'verify-profile-exists')
     ->except([
         'index', 'show'
     ]);
 
 Route::resource('posts', PostController::class)
-    ->middleware('auth')
+    ->middleware('auth', 'verify-profile-exists')
     ->except([
         'update', 'edit'
     ]);

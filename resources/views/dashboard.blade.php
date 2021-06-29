@@ -14,7 +14,7 @@
     </a>
   </div>
 
-  something
+  {{ $profile->education }}
 </section>
 
 <section class="w-1/4 mt-5">

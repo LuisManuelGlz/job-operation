@@ -22,13 +22,7 @@ class LoginController extends Controller
         if (!Auth::attempt($request->only('email', 'password')))
             return back()->with('status', 'Invalid email or password');
 
-        $user_id = Auth::user()->id;
-        $profile = Profile::where('user_id', $user_id)->first();
-
-        if ($profile)
-            return redirect()->route('profiles.me');
-
-        return redirect()->route('profiles.create');
+        return redirect()->route('profiles.me');
     }
 
     public function logout() {

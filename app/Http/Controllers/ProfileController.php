@@ -15,10 +15,8 @@ class ProfileController extends Controller
      */
     public function me()
     {
-        $user_id = Auth::user()->id;
-        $profile = Profile::where('user_id', $user_id)->first();
-
-        return view('dashboard');
+        $profile = Auth::user()->profile;
+        return view('dashboard', ['profile' => $profile]);
     }
 
     /**
@@ -28,13 +26,6 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        $user_id = Auth::user()->id;
-        $profile = Profile::where('user_id', $user_id)->first();
-
-        if ($profile) {
-            return redirect()->route('profiles.me');
-        }
-
         return view('profiles.create');
     }
 
