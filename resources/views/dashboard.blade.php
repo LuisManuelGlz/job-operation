@@ -25,7 +25,7 @@
     </a>
   </div>
 
-  something
+  {{ $profile->certifications }}
 </section>
 
 <section class="w-1/4 mt-5">

@@ -15,6 +15,14 @@ class CreateCertificationsTable extends Migration
     {
         Schema::create('certifications', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('profile_id')->constrained()->onDelete('cascade');
+            $table->text('name');
+            $table->text('issuing_company');
+            $table->text('month_of_issue');
+            $table->boolean('has_an_expiration_date');
+            $table->text('expiration_date')->nullable();
+            $table->text('credential_id')->nullable();
+            $table->text('url');
             $table->timestamps();
         });
     }

@@ -27,14 +27,14 @@ class ExperienceController extends Controller
      */
     public function store(Request $request)
     {
-        $has_current_job = $request->has('current_job');
+        $current_job = $request->has('current_job');
 
         $request->validate([
             'position' => 'required',
             'company' => 'required',
             'location' => 'required',
             'from_date' => 'required',
-            'to_date' => $has_current_job ? '' : 'required',
+            'to_date' => $current_job ? '' : 'required',
             'description' => 'required',
         ]);
 
@@ -43,7 +43,7 @@ class ExperienceController extends Controller
         $profile->experience()->create(
             array_merge(
                 $request->all(),
-                ['current_job' => $has_current_job]
+                ['current_job' => $current_job]
             )
         );
 

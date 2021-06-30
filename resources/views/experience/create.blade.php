@@ -22,16 +22,6 @@
   </div>
 
   <div class="mt-5">
-    <input
-      id="current_job"
-      type="checkbox"
-      name="current_job"
-      value="{{ old('current_job') }}"
-      autocomplete="off">
-    <label class="text-lg" for="current_job">Current job</label>
-  </div>
-
-  <div class="mt-5">
     <label class="block text-2xl" for="company">Company</label>
     <input class="w-full focus:outline-none focus:ring focus:border-blue-300 rounded-full px-4 py-2 border"
       name="company"
@@ -65,6 +55,16 @@
     <span class="text-red-400">
       @error('location') {{ $message }} @enderror
     </span>
+  </div>
+
+  <div class="mt-5">
+    <input
+      id="current_job"
+      type="checkbox"
+      name="current_job"
+      value="{{ old('current_job') }}"
+      autocomplete="off">
+    <label class="text-lg" for="current_job">Current job</label>
   </div>
 
   <div class="mt-5">
@@ -106,9 +106,9 @@
 <script>
   function showCurrentJobGroup() {
     if (this.checked) {
-      $('#to_date_group').attr("hidden", true);
+      $('#to_date_group').addClass('hidden');
     } else {
-      $('#to_date_group').removeAttr("hidden");
+      $('#to_date_group').removeClass('hidden');
     }
   }
 

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Certification;
+use App\Models\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CertificationController extends Controller
 {
@@ -25,7 +27,27 @@ class CertificationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $has_an_expiration_date = $request->has('has_an_expiration_date');
+
+        $request->validate([
+            'name' => 'required',
+            'issuing_company' => 'required',
+            'month_of_issue' => 'required',
+            'expiration_date' => $has_an_expiration_date ? 'required' : '',
+            'credential_id' => 'required',
+            'url' => 'required',
+        ]);
+
+        $user_id = Auth::user()->id;
+        $profile = Profile::where('user_id', $user_id)->first();
+        $profile->certifications()->create(
+            array_merge(
+                $request->all(),
+                ['has_an_expiration_date' => $has_an_expiration_date]
+            )
+        );
+
+        return redirect()->route('profiles.dashboard');
     }
 
     /**
