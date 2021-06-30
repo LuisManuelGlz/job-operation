@@ -38,9 +38,7 @@ class ExperienceController extends Controller
             'description' => 'required',
         ]);
 
-        $user_id = Auth::user()->id;
-        $profile = Profile::where('user_id', $user_id)->first();
-        $profile->experience()->create(
+        Auth::user()->profile->experience()->create(
             array_merge(
                 $request->all(),
                 ['current_job' => $current_job]

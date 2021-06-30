@@ -24,6 +24,13 @@ class Certification extends Model
         'url',
     ];
 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = ['profile_id', 'created_at', 'updated_at'];
+
     public function profile()
     {
         return $this->belongsTo(Profile::class);

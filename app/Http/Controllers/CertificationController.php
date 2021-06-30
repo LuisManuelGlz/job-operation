@@ -38,9 +38,7 @@ class CertificationController extends Controller
             'url' => 'required',
         ]);
 
-        $user_id = Auth::user()->id;
-        $profile = Profile::where('user_id', $user_id)->first();
-        $profile->certifications()->create(
+        Auth::user()->profile->certifications()->create(
             array_merge(
                 $request->all(),
                 ['has_an_expiration_date' => $has_an_expiration_date]

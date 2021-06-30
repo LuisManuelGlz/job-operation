@@ -23,6 +23,13 @@ class Profile extends Model
         'website',
     ];
 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = ['user_id', 'updated_at'];
+
     public function user() {
         return $this->belongsTo(User::class);
     }

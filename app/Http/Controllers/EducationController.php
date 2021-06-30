@@ -33,10 +33,8 @@ class EducationController extends Controller
             'starting_year' => 'required',
             'ending_year' => 'required',
         ]);
-        
-        $user_id = Auth::user()->id;
-        $profile = Profile::where('user_id', $user_id)->first();
-        $profile->education()->create($request->all());
+
+        Auth::user()->profile->education()->create($request->all());
 
         return redirect()->route('profiles.dashboard');
     }
