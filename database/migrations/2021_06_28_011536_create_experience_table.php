@@ -15,6 +15,14 @@ class CreateExperienceTable extends Migration
     {
         Schema::create('experience', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('profile_id')->constrained()->onDelete('cascade');
+            $table->text('position');
+            $table->text('company');
+            $table->text('location');
+            $table->boolean('current_job');
+            $table->date('from_date');
+            $table->date('to_date')->nullable();
+            $table->text('description');
             $table->timestamps();
         });
     }

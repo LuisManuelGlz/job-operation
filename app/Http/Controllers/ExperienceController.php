@@ -3,17 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Experience;
+use App\Models\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ExperienceController extends Controller
 {
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'experience';
-
     /**
      * Show the form for creating a new resource.
      *
@@ -32,7 +27,27 @@ class ExperienceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $has_current_job = $request->has('current_job');
+
+        $request->validate([
+            'position' => 'required',
+            'company' => 'required',
+            'location' => 'required',
+            'from_date' => 'required',
+            'to_date' => $has_current_job ? '' : 'required',
+            'description' => 'required',
+        ]);
+
+        $user_id = Auth::user()->id;
+        $profile = Profile::where('user_id', $user_id)->first();
+        $profile->experience()->create(
+            array_merge(
+                $request->all(),
+                ['current_job' => $has_current_job]
+            )
+        );
+
+        return redirect()->route('profiles.dashboard');
     }
 
     /**

@@ -36,7 +36,7 @@
     </a>
   </div>
 
-  something
+  {{ $profile->experience }}
 </section>
 
 @endsection

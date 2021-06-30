@@ -31,4 +31,9 @@ class Profile extends Model
     {
         return $this->hasMany(Education::class);
     }
+
+    public function experience()
+    {
+        return $this->hasMany(Experience::class);
+    }
 }
