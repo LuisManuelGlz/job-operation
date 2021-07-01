@@ -47,7 +47,7 @@ class EducationController extends Controller
      */
     public function edit(Education $education)
     {
-        //
+        return view('education.edit', ['education' => $education]);
     }
 
     /**
@@ -59,7 +59,16 @@ class EducationController extends Controller
      */
     public function update(Request $request, Education $education)
     {
-        //
+        $request->validate([
+            'school' => 'required',
+            'degree' => 'required',
+            'starting_year' => 'required',
+            'ending_year' => 'required',
+        ]);
+
+        $education->update($request->all());
+
+        return redirect()->route('profiles.dashboard');
     }
 
     /**

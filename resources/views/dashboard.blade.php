@@ -8,8 +8,11 @@
 
 <section class="w-1/2 mt-5">
   <div class="flex items-center justify-between">
-    <h3 class="text-4xl">Education</h3>
-    <a href="{{ route('education.create') }}">
+    <div class="flex gap-3 items-center">
+      <img src="{{ url('/images/school.svg') }}" alt="School" width="30">
+      <h3 class="text-4xl">Education</h3>
+    </div>
+    <a class="hover:bg-blue-100 p-2 rounded-lg" href="{{ route('education.create') }}">
       <img src="{{ url('/images/plus.svg') }}" alt="Plus" width="20">
     </a>
   </div>
@@ -17,11 +20,11 @@
   @if (count($profile->education) > 0)
     <ul>
       @foreach ($profile->education as $education)
-        <li class="my-2 p-5 bg-blue-100 rounded">
+        <li class="my-2 p-5 bg-blue-100 rounded-lg">
           <div>
             <div class="flex justify-between">
               <div class="text-xl font-bold">{{ $education->school }}</div>
-              <a href="#">
+              <a class="hover:bg-blue-200 p-2 rounded-lg" href="{{ route('education.edit', ['education' => $education]) }}">
                 <img src="{{ url('/images/edit.svg') }}" alt="Edit" width="20">
               </a>
             </div>
@@ -39,10 +42,13 @@
   @endif
 </section>
 
-<section class="w-1/2 mt-5">
+<section class="w-1/2 mt-10">
   <div class="flex items-center justify-between">
-    <h3 class="text-4xl">Certifications</h3>
-    <a href="{{ route('certifications.create') }}">
+    <div class="flex gap-3 items-center">
+      <img src="{{ url('/images/certificate.svg') }}" alt="Certificate" width="30">
+      <h3 class="text-4xl">Certifications</h3>
+    </div>
+    <a class="hover:bg-blue-100 p-2 rounded-lg" href="{{ route('certifications.create') }}">
       <img src="{{ url('/images/plus.svg') }}" alt="Plus" width="20">
     </a>
   </div>
@@ -50,11 +56,11 @@
   @if (count($profile->certifications) > 0)
     <ul>
       @foreach ($profile->certifications as $certification)
-        <li class="my-2 p-5 bg-blue-100 rounded">
+        <li class="my-2 p-5 bg-blue-100 rounded-lg">
           <div>
             <div class="flex justify-between">
               <div class="text-xl font-bold">{{ $certification->name }}</div>
-              <a href="#">
+              <a class="hover:bg-blue-200 p-2 rounded-lg" href="#">
                 <img src="{{ url('/images/edit.svg') }}" alt="Edit" width="20">
               </a>
             </div>
@@ -83,10 +89,13 @@
   @endif
 </section>
 
-<section class="w-1/2 mt-5">
+<section class="w-1/2 mt-10">
   <div class="flex items-center justify-between">
-    <h3 class="text-4xl">Experience</h3>
-    <a href="{{ route('experience.create') }}">
+    <div class="flex gap-3 items-center">
+      <img src="{{ url('/images/portfolio.svg') }}" alt="Portfolio" width="30">
+      <h3 class="text-4xl">Experience</h3>
+    </div>
+    <a class="hover:bg-blue-100 p-2 rounded-lg" href="{{ route('experience.create') }}">
       <img src="{{ url('/images/plus.svg') }}" alt="Plus" width="20">
     </a>
   </div>
@@ -94,11 +103,11 @@
   @if (count($profile->experience) > 0)
     <ul>
       @foreach ($profile->experience as $experience)
-        <li class="my-2 p-5 bg-blue-100 rounded">
+        <li class="my-2 p-5 bg-blue-100 rounded-lg">
           <div>
             <div class="flex justify-between">
               <div class="text-xl font-bold">{{ $experience->position }}</div>
-              <a href="#">
+              <a class="hover:bg-blue-200 p-2 rounded-lg" href="#">
                 <img src="{{ url('/images/edit.svg') }}" alt="Edit" width="20">
               </a>
             </div>

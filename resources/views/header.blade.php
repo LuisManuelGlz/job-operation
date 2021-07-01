@@ -7,14 +7,20 @@
     @if (auth()->user())
       <li class="hover:text-blue-300">
         <a href="{{ route('profiles.dashboard') }}">
-          Dashboard
+          <div class="flex gap-1 items-center">
+            <img src="{{ url('/images/dashboard.svg') }}" alt="Dashboard" width="20">
+            Dashboard
+          </div>
         </a>
       </li>
       <li class="hover:text-blue-300">
         <form action="{{ route('logout') }}" method="post">
           @csrf()
           <button type="submit">
-            Logout
+            <div class="flex gap-1 items-center">
+              <img src="{{ url('/images/logout.svg') }}" alt="Logout" width="20">
+              Logout
+            </div>
           </button>
         </form>
       </li>
