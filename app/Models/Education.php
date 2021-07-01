@@ -32,4 +32,26 @@ class Education extends Model
     {
         return $this->belongsTo(Profile::class);
     }
+
+    /**
+     * Set the user's school.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setSchoolAttribute($value)
+    {
+        $this->attributes['school'] = ucfirst($value);
+    }
+
+    /**
+     * Set the user's degree.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setDegreeAttribute($value)
+    {
+        $this->attributes['degree'] = ucfirst($value);
+    }
 }

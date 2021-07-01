@@ -42,4 +42,48 @@ class Experience extends Model
     {
         return $this->belongsTo(Profile::class);
     }
+
+    /**
+     * Set the user's position.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setPositionAttribute($value)
+    {
+        $this->attributes['position'] = ucfirst($value);
+    }
+
+    /**
+     * Set the user's company.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setCompanyAttribute($value)
+    {
+        $this->attributes['company'] = ucfirst($value);
+    }
+
+    /**
+     * Set the user's description.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setDescriptionAttribute($value)
+    {
+        $this->attributes['description'] = ucfirst($value);
+    }
+
+    /**
+     * Set the user's location.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setLocationAttribute($value)
+    {
+        $this->attributes['location'] = ucfirst($value);
+    }
 }

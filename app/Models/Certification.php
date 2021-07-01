@@ -19,7 +19,7 @@ class Certification extends Model
         'issuing_company',
         'month_of_issue',
         'has_an_expiration_date',
-        'expiration_date',
+        'expiration_date', // no expiration date
         'credential_id',
         'url',
     ];
@@ -34,5 +34,27 @@ class Certification extends Model
     public function profile()
     {
         return $this->belongsTo(Profile::class);
+    }
+
+    /**
+     * Set the user's certification name.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = ucfirst($value);
+    }
+
+    /**
+     * Set the user's issuing company.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setIssuingCompanyAttribute($value)
+    {
+        $this->attributes['issuing_company'] = ucfirst($value);
     }
 }
