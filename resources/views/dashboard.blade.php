@@ -107,7 +107,7 @@
           <div>
             <div class="flex justify-between">
               <div class="text-xl font-bold">{{ $experience->position }}</div>
-              <a class="hover:bg-blue-200 p-2 rounded-lg" href="#">
+              <a class="hover:bg-blue-200 p-2 rounded-lg" href="{{ route('experience.edit', $experience) }}">
                 <img src="{{ url('/images/edit.svg') }}" alt="Edit" width="20">
               </a>
             </div>

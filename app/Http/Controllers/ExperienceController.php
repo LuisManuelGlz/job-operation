@@ -56,7 +56,7 @@ class ExperienceController extends Controller
      */
     public function edit(Experience $experience)
     {
-        //
+        return view('experience.edit', ['experience' => $experience]);
     }
 
     /**
@@ -68,7 +68,23 @@ class ExperienceController extends Controller
      */
     public function update(Request $request, Experience $experience)
     {
-        //
+        $current_job = $request->has('current_job');
+
+        $request->validate([
+            'position' => 'required',
+            'company' => 'required',
+            'location' => 'required',
+            'from_date' => 'required',
+            'to_date' => $current_job ? '' : 'required',
+            'description' => 'required',
+        ]);
+
+        $experience->update(array_merge(
+            $request->all(),
+            ['current_job' => $current_job]
+        ));
+
+        return redirect()->route('profiles.dashboard');
     }
 
     /**
