@@ -79,6 +79,7 @@ class EducationController extends Controller
      */
     public function destroy(Education $education)
     {
-        //
+        $education->delete();
+        return redirect()->route('profiles.dashboard');
     }
 }

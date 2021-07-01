@@ -24,9 +24,21 @@
           <div>
             <div class="flex justify-between">
               <div class="text-xl font-bold">{{ $education->school }}</div>
-              <a class="hover:bg-blue-200 p-2 rounded-lg" href="{{ route('education.edit', $education) }}">
-                <img src="{{ url('/images/edit.svg') }}" alt="Edit" width="20">
-              </a>
+              <div class="flex">
+                <a class="hover:bg-blue-200 p-2 rounded-lg" href="{{ route('education.edit', $education) }}">
+                  <img src="{{ url('/images/edit.svg') }}" alt="Edit" width="20">
+                </a>
+                <form
+                  onsubmit="return confirm('Are you sure you want to delete it?');"
+                  action="{{ route('education.destroy', $education) }}"
+                  method="post">
+                  @method('delete')
+                  @csrf()
+                  <button class="hover:bg-blue-200 p-2 rounded-lg" type="submit">
+                    <img src="{{ url('/images/trash.svg') }}" alt="Delete" width="20">
+                  </button>
+                </form>
+              </div>
             </div>
             <div>{{ $education->company }}</div>
             <div>{{ $education->degree }}</div>
@@ -60,9 +72,21 @@
           <div>
             <div class="flex justify-between">
               <div class="text-xl font-bold">{{ $certification->name }}</div>
-              <a class="hover:bg-blue-200 p-2 rounded-lg" href="{{ route('certifications.edit', $certification) }}">
-                <img src="{{ url('/images/edit.svg') }}" alt="Edit" width="20">
-              </a>
+              <div class="flex">
+                <a class="hover:bg-blue-200 p-2 rounded-lg" href="{{ route('certifications.edit', $certification) }}">
+                  <img src="{{ url('/images/edit.svg') }}" alt="Edit" width="20">
+                </a>
+                <form
+                  onsubmit="return confirm('Are you sure you want to delete this certificate?');"
+                  action="{{ route('certifications.destroy', $certification) }}"
+                  method="post">
+                  @method('delete')
+                  @csrf()
+                  <button class="hover:bg-blue-200 p-2 rounded-lg" type="submit">
+                    <img src="{{ url('/images/trash.svg') }}" alt="Delete" width="20">
+                  </button>
+                </form>
+              </div>
             </div>
             <div>{{ $certification->issuing_company }}</div>
             <div>
@@ -107,9 +131,21 @@
           <div>
             <div class="flex justify-between">
               <div class="text-xl font-bold">{{ $experience->position }}</div>
-              <a class="hover:bg-blue-200 p-2 rounded-lg" href="{{ route('experience.edit', $experience) }}">
-                <img src="{{ url('/images/edit.svg') }}" alt="Edit" width="20">
-              </a>
+              <div class="flex">
+                <a class="hover:bg-blue-200 p-2 rounded-lg" href="{{ route('experience.edit', $experience) }}">
+                  <img src="{{ url('/images/edit.svg') }}" alt="Edit" width="20">
+                </a>
+                <form
+                  onsubmit="return confirm('Are you sure you want to delete it?');"
+                  action="{{ route('experience.destroy', $experience) }}"
+                  method="post">
+                  @method('delete')
+                  @csrf()
+                  <button class="hover:bg-blue-200 p-2 rounded-lg" type="submit">
+                    <img src="{{ url('/images/trash.svg') }}" alt="Delete" width="20">
+                  </button>
+                </form>
+              </div>
             </div>
             <div>{{ $experience->company }}</div>
             <div>{{ $experience->location }}</div>

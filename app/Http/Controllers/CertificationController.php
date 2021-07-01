@@ -95,6 +95,7 @@ class CertificationController extends Controller
      */
     public function destroy(Certification $certification)
     {
-        //
+        $certification->delete();
+        return redirect()->route('profiles.dashboard');
     }
 }
