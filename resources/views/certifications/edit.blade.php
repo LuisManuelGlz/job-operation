@@ -23,7 +23,7 @@
   </div>
 
   <div class="mt-5">
-    <label class="block text-2xl" for="issuing_company">Company</label>
+    <label class="block text-2xl" for="issuing_company">Issuing company</label>
     <input class="w-full focus:outline-none focus:ring focus:border-blue-300 rounded-full px-4 py-2 border"
       name="issuing_company"
       type="text"
