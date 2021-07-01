@@ -24,7 +24,7 @@
           <div>
             <div class="flex justify-between">
               <div class="text-xl font-bold">{{ $education->school }}</div>
-              <a class="hover:bg-blue-200 p-2 rounded-lg" href="{{ route('education.edit', ['education' => $education]) }}">
+              <a class="hover:bg-blue-200 p-2 rounded-lg" href="{{ route('education.edit', $education) }}">
                 <img src="{{ url('/images/edit.svg') }}" alt="Edit" width="20">
               </a>
             </div>
@@ -60,7 +60,7 @@
           <div>
             <div class="flex justify-between">
               <div class="text-xl font-bold">{{ $certification->name }}</div>
-              <a class="hover:bg-blue-200 p-2 rounded-lg" href="#">
+              <a class="hover:bg-blue-200 p-2 rounded-lg" href="{{ route('certifications.edit', $certification) }}">
                 <img src="{{ url('/images/edit.svg') }}" alt="Edit" width="20">
               </a>
             </div>

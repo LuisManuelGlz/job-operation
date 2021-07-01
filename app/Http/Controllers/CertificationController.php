@@ -56,7 +56,7 @@ class CertificationController extends Controller
      */
     public function edit(Certification $certification)
     {
-        //
+        return view('certifications.edit', ['certification' => $certification]);
     }
 
     /**
@@ -68,7 +68,23 @@ class CertificationController extends Controller
      */
     public function update(Request $request, Certification $certification)
     {
-        //
+        $has_an_expiration_date = $request->has('has_an_expiration_date');
+
+        $request->validate([
+            'name' => 'required',
+            'issuing_company' => 'required',
+            'month_of_issue' => 'required',
+            'expiration_date' => $has_an_expiration_date ? 'required' : '',
+            'credential_id' => 'required',
+            'url' => 'required',
+        ]);
+
+        $certification->update(array_merge(
+            $request->all(),
+            ['has_an_expiration_date' => $has_an_expiration_date]
+        ));
+
+        return redirect()->route('profiles.dashboard');
     }
 
     /**

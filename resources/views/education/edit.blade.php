@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title') Create education @endsection
+@section('title') Update education @endsection
 
 @section('content')
 
 <h2 class="font-bold text-5xl text-blue-400 mb-10">Edit education</h2>
 
-<form class="w-1/2" action="{{ route('education.update', $education->id) }}" method="post">
+<form class="w-1/2" action="{{ route('education.update', $education) }}" method="post">
   @method('put')
   @csrf()
 
